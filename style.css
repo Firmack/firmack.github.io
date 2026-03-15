@@ -318,15 +318,14 @@ h4 {
 }
 
 .hero-title {
-    font-size: clamp(3rem, 8vw, 7rem);
+    font-size: clamp(2.2rem, 8vw, 7rem);
     font-weight: 500;
     margin-bottom: 0.5rem;
-    margin-left: -5px;
-    /* Visual alignment */
+    margin-left: -5px; /* Visual alignment – removed on mobile */
 }
 
 .hero-role {
-    font-size: clamp(1.5rem, 4vw, 3rem);
+    font-size: clamp(1.1rem, 4vw, 3rem);
     color: var(--text-secondary);
     margin-bottom: 3rem;
     font-weight: 300;
@@ -621,6 +620,9 @@ h4 {
     padding: 40px;
     border-radius: 4px;
     animation: fadeIn 0.4s ease;
+    min-width: 0;
+    overflow-wrap: break-word;
+    word-break: break-word;
 }
 
 .project-detail-card.active {
@@ -730,7 +732,7 @@ h4 {
 }
 
 #contact .container {
-    width: 80%;
+    width: 100%;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -790,6 +792,13 @@ h4 {
 
 /* Responsive Utilities */
 @media (max-width: 768px) {
+
+    /* ── Section spacing ── */
+    .section-spacing {
+        padding: 70px 0;
+    }
+
+    /* ── Navbar ── */
     .hamburger {
         display: flex;
     }
@@ -800,9 +809,12 @@ h4 {
         top: 100%;
         left: 0;
         width: 100%;
-        background-color: var(--bg-main);
+        background-color: rgba(10, 10, 10, 0.97);
+        backdrop-filter: blur(12px);
+        -webkit-backdrop-filter: blur(12px);
         flex-direction: column;
-        padding: 20px;
+        gap: 0;
+        padding: 10px 0;
         border-bottom: 1px solid var(--border-color);
     }
 
@@ -810,12 +822,115 @@ h4 {
         display: flex;
     }
 
-    .hero-actions {
-        flex-direction: column;
+    .nav-links li {
+        list-style: none;
+        width: 100%;
     }
 
+    .nav-link {
+        display: block;
+        padding: 14px 5%;
+        font-size: 1rem;
+        border-bottom: 1px solid var(--border-color);
+        letter-spacing: 0.01em;
+    }
+
+    /* ── Hero / Contact sections ── */
+    .hero-title {
+        margin-left: 0;
+        line-height: 1.05;
+    }
+
+    .hero-role {
+        margin-bottom: 2rem;
+    }
+
+    .hero-actions {
+        flex-direction: column;
+        gap: 12px;
+    }
+
+    .hero-actions .btn {
+        width: 100%;
+        text-align: center;
+        padding: 1rem 1.5rem;
+    }
+
+    /* ── About section ── */
+    .section-header {
+        margin-bottom: 20px;
+    }
+
+    .grid-layout {
+        gap: 20px;
+    }
+
+    .subsection-title {
+        font-size: 1.25rem;
+    }
+
+    .about-text-block {
+        padding: 20px;
+    }
+
+    /* ── Skills section ── */
+    .skills-container {
+        gap: 30px;
+    }
+
+    .skill-badge {
+        padding: 8px 16px;
+        font-size: 0.9rem;
+    }
+
+    /* ── Projects section ── */
+    .project-nav-item {
+        padding: 14px 16px;
+    }
+
+    .project-detail-card {
+        padding: 20px;
+    }
+
+    .detail-project-role {
+        font-size: 1.4rem;
+    }
+
+    .detail-project-meta {
+        flex-direction: column;
+        gap: 4px;
+    }
+
+    .project-header-content {
+        margin-bottom: 20px;
+        padding-bottom: 16px;
+    }
+
+    /* ── Contact section ── */
+    #contact .container {
+        width: 100%;
+        align-items: flex-start;
+    }
+
+    .contact-grid {
+        gap: 12px;
+        width: 100%;
+    }
+
+    .cv-download {
+        width: 100%;
+        justify-content: center;
+        padding: 0 20px;
+    }
+
+    /* ── Old class kept for compat ── */
     .project-card {
         padding: 30px 20px;
+    }
+
+    /* ── Footer ── */
+    .footer {
+        text-align: center;
     }
 }
 
