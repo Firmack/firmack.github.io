@@ -397,17 +397,6 @@ h4 {
     position: relative;
 }
 
-.about-text-block::before {
-    content: '';
-    position: absolute;
-    left: 0;
-    top: 0;
-    bottom: 0;
-    width: 4px;
-    background-color: var(--border-highlight);
-    border-radius: 4px 0 0 4px;
-}
-
 .about-text-block p:last-child {
     margin-bottom: 0;
 }
