@@ -162,7 +162,8 @@ If a query is slow, a pipeline is fragile, or a schema needs a rethink - that's 
 
 ---
 
-### Data Warehouse Developer — Pacific Specialty Insurance Company | Kyiv, Ukraine
+### Data Warehouse Developer — Pacific Specialty Insurance Company | Kyiv,
+                                    Ukraine
 **July 2016 - March 2018**
 
 - Designed and optimized data warehouses for efficient data storage and retrieval.
@@ -202,7 +203,7 @@ If a query is slow, a pipeline is fragile, or a schema needs a rethink - that's 
 | ✈️ Telegram | [t.me/agueroacorn](https://t.me/agueroacorn) |
 | 🐙 GitHub | [github.com/Firmack](https://github.com/Firmack) |
 | 💼 LinkedIn | [www.linkedin.com/in/firmack](https://www.linkedin.com/in/firmack/) |
-| 📄 CV | [Download CV](https://drive.google.com/file/d/1XS6Y_Bzsd5MTO5bTf5mKxORTJ9ao0HYS/view?usp=sharing) |
+| 📄 CV | [Download CV](https://raw.githubusercontent.com/Firmack/firmack.github.io/main/Serhii_Zelenskyi_CV.pdf) |
 
 ---
 
