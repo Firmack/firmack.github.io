@@ -67,6 +67,12 @@ If a query is slow, a pipeline is fragile, or a schema needs a rethink - that's 
 - Conducted advanced database performance tuning and troubleshooting for
                                     mission-critical applications.
 - Mentored development teams on optimization techniques and database best practices.
+- Architected scalable multi-tenant data models supporting complex mining telemetry
+                                    and operational datasets across multiple sites.
+- Designed partition strategies and indexing frameworks to support high-volume
+                                    time-series data ingestion and reporting workloads.
+- Implemented CI/CD pipelines for automated database deployments using Azure DevOps
+                                    and SSDT, reducing release risk and manual effort.
 
 ---
 
@@ -96,6 +102,8 @@ If a query is slow, a pipeline is fragile, or a schema needs a rethink - that's 
 - Developed ETL workflows focused on performance and data transfer optimization.
 - Facilitated cross-functional collaboration to solve complex database performance
                                     challenges.
+- Assessed legacy database structures and defined migration strategies to modernise
+                                    architecture while preserving business continuity.
 
 ---
 
@@ -108,6 +116,16 @@ If a query is slow, a pipeline is fragile, or a schema needs a rethink - that's 
                                     part-time basis.
 - Delivered ETL pipeline improvements and database performance tuning alongside
                                     full-time employment.
+- Built trusted advisor relationships with clients, translating complex technical
+                                    concepts into clear business outcomes and actionable recommendations.
+- Refactored legacy database codebases for multiple clients, eliminating redundant
+                                    logic, consolidating duplicated procedures, and improving long-term maintainability.
+- Introduced SQL coding standards and naming conventions across client environments,
+                                    establishing a consistent development baseline for ongoing and future work.
+- Delivered targeted query and schema optimisations that reduced execution times and
+                                    resource consumption, providing measurable performance gains within constrained
+                                    consulting
+                                    timeframes.
 
 ---
 
@@ -123,6 +141,18 @@ If a query is slow, a pipeline is fragile, or a schema needs a rethink - that's 
                                     deployment optimization.
 - Mentored database development teams on advanced optimization techniques and
                                     performance best practices.
+- Led a team of database developers, overseeing task allocation, code reviews, and
+                                    delivery planning to ensure consistent output quality and on-time releases.
+- Acted as the primary escalation point for complex technical issues, guiding the team
+                                    through root cause analysis and resolution under production pressure.
+- Developed and implemented database performance monitoring and alerting systems to
+                                    proactively identify and address performance bottlenecks.
+- Delivered database solutions compliant with healthcare data sensitivity
+                                    requirements, ensuring appropriate access controls and audit trail implementation.
+- Introduced peer code review processes for all database changes, significantly
+                                    reducing defect rates and improving knowledge sharing across the team.
+- Developed and implemented database performance monitoring and alerting systems to
+                                    proactively identify and address performance bottlenecks.
 
 ---
 
@@ -146,6 +176,8 @@ If a query is slow, a pipeline is fragile, or a schema needs a rethink - that's 
                                     techniques.
 - Collaborated with stakeholders to deliver optimized data integration and reporting
                                     solutions.
+- Refactored legacy SSIS package suites using BIML, replacing manually maintained
+                                    packages with dynamically generated, template-driven solutions.
 
 ---
 
@@ -159,19 +191,13 @@ If a query is slow, a pipeline is fragile, or a schema needs a rethink - that's 
                                     performance-focused solutions.
 - Contributed to data modeling and schema design with emphasis on performance
                                     optimization.
-
----
-
-### Data Warehouse Developer — Pacific Specialty Insurance Company | Kyiv,
-                                    Ukraine
-**July 2016 - March 2018**
-
-- Designed and optimized data warehouses for efficient data storage and retrieval.
-- Implemented ETL processes with focus on performance and data accuracy.
-- Optimized database performance through advanced SQL query tuning and schema
-                                    optimization.
-- Collaborated with teams to ensure optimal data integration and reporting
-                                    performance.
+- Designed and developed SSAS multidimensional cubes to support analytical reporting
+                                    across complex insurance datasets, enabling fast aggregation and slice-and-dice
+                                    analysis.
+- Participated in full development lifecycle for database features, from requirements
+                                    analysis and design through implementation, testing, and production release.
+- Contributed to iterative delivery cycles, adapting database solutions to evolving
+                                    business requirements while maintaining stability of existing systems.
 
 ---
 
@@ -182,6 +208,10 @@ If a query is slow, a pipeline is fragile, or a schema needs a rethink - that's 
 - Provided technical support with focus on database performance troubleshooting.
 - Collaborated with development teams to implement database performance improvements.
 - Automated processes to streamline performance monitoring and optimization tasks.
+- Collaborated with reporting teams to design warehouse structures aligned with
+                                    analytical and operational reporting requirements.
+- Delivered reliable data feeds and aggregation layers that reduced report generation
+                                    times and improved consistency across business intelligence outputs.
 
 ---
 
@@ -191,6 +221,17 @@ If a query is slow, a pipeline is fragile, or a schema needs a rethink - that's 
 - Provided technical support and database performance optimization for enterprise
                                     applications.
 - Implemented database performance monitoring and optimization procedures.
+- Diagnosed and resolved complex database issues across enterprise retail
+                                    applications,
+                                    minimising system downtime and ensuring continuity of business-critical operations.
+- Responded to escalated support requests, performing root cause analysis and
+                                    implementing fixes under time-sensitive production conditions.
+- Supported database systems underpinning retail point-of-sale and back-office
+                                    operations, gaining deep understanding of high-transaction retail data environments.
+- Worked closely with development and infrastructure teams to investigate and resolve
+                                    environment-specific database performance issues
+- Acted as a reliable technical contact for application teams, bridging the gap
+                                    between database operations and software delivery processes.
 
 ---
 
