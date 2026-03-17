@@ -61,7 +61,7 @@ hamburger.addEventListener('click', () => {
 });
 
 // Smooth scrolling and close mobile nav on click
-document.querySelectorAll('.nav-link').forEach(link => {
+document.querySelectorAll('.nav-link, .btn[href^="#"]').forEach(link => {
     link.addEventListener('click', function(e) {
         e.preventDefault();
         
