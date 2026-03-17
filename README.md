@@ -7,49 +7,38 @@
 ## About Me
 
 I am a Senior Data Architect and Database Engineer with 10+ years of
-                            expertise specializing in database performance tuning and architectural
-                        optimization.
+                        expertise specializing in database performance tuning and architectural
+                    optimization.
 
 I architect data systems that hold up under pressure - high-volume warehouses, complex
-                        pipelines,
-                        and
-                        databases that don't slow down when the business scales.
-                        I've moved from writing optimised queries to defining the
-                        standards teams write by.
+                    pipelines, and databases that don't slow down when the business scales.
+                    I've moved from writing optimised queries to defining the
+                    standards teams write by.
 
 Most of my work lives at the intersection of engineering rigor and delivery speed:
 
 - **Design** ETL/ELT pipelines that actually run on time
 - **Migrate** production databases without drama
 - **Build** the kind of data infrastructure that lets analysts answer questions
-                            fast
+                        fast
 - **Automate** CI/CD for data teams to move code from local to production in
-                            minutes.
+                        minutes.
 
 I've led database teams, mentored engineers at every level, and collaborated closely with
-                        stakeholders
-                        to turn messy data problems into clean, maintainable solutions.
+                    stakeholders to turn messy data problems into clean, maintainable solutions.
 
 If a query is slow, a pipeline is fragile, or a schema needs a rethink - that's my kind of
-                        problem.
-
-| | |
-|---|---|
-| **Location** | Valencia, Spain |
-| **Language** | English, Ukrainian |
-| **Education** | Master's Degree, Economic Cybernetics National Aviation University | Kyiv, Ukraine |
-
----
+                    problem.
 
 ## Skills & Tools
 
 ### Technical Expertise
 
-`MSSQL` `PostgreSQL` `AWS` `GCP` `Google BigQuery` `Snowflake` `Airbyte` `AirFlow` `Azure DevOps` `Docker` `ETL/ELT` `Data Modeling` `DWH` `CI/CD` `Database Migration` `Performance Monitoring` `Git` `Python` `GOLang` `TypeScript` `Parquet` `CSV` `JSON` `XML` `GCP Cloud Run` `Serverless` `AWS RDS` `AWS EC2` `DBT` `SSIS` `SSAS` `SSRS` `SSDT` `PowerBI` `BIML`
+`MSSQL` `PostgreSQL` `Google BigQuery` `Snowflake` `Airbyte` `Azure DevOps` `ETL/ELT` `Data Modeling` `DWH` `CI/CD` `Database Migration` `Performance Monitoring` `Git` `Python` `Parquet` `CSV` `JSON` `XML` `DBT` `SSIS` `SSAS` `SSRS` `SSDT` `PowerBI` `BIML`
 
 ### Leadership & Domains
 
-`Code Standards` `Technical Leadership` `Mentoring` `Stakeholder Comm.` `Cross-functional Collab` `Health Care` `Education` `Private Equity` `Insurance` `Retail` `Telecom` `Mining Technology`
+`Code Standards` `Technical Leadership` `Mentoring` `Stakeholder Comm.` `Health Care` `Education` `Private Equity` `Insurance` `Retail` `Telecom` `Mining Technology`
 
 ---
 

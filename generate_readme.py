@@ -83,6 +83,13 @@ def build_readme(soup: BeautifulSoup) -> str:
             lines += ["", "---", ""]
 
     # ── Skills ────────────────────────────────────────────────────────────────
+    # Collect every skill key referenced by at least one project (mirrors JS logic)
+    used_skills: set[str] = set()
+    for nav_item in soup.select("#projects .project-nav-item"):
+        skills_str = nav_item.get("data-skills", "")
+        if skills_str:
+            used_skills.update(k.strip() for k in skills_str.split(","))
+
     skills_section = soup.select_one("#skills")
     if skills_section:
         lines += ["## Skills & Tools", ""]
@@ -90,8 +97,12 @@ def build_readme(soup: BeautifulSoup) -> str:
             group_title = text(group.select_one(".skills-group-title"))
             if group_title:
                 lines += [f"### {group_title}", ""]
-            badges = [text(b) for b in group.select(".skill-badge")]
-            lines += [" ".join(f"`{b}`" for b in badges), ""]
+            badges = [
+                text(b) for b in group.select(".skill-badge")
+                if b.get("data-skill") in used_skills
+            ]
+            if badges:
+                lines += [" ".join(f"`{b}`" for b in badges), ""]
         lines += ["---", ""]
 
     # ── Experience ────────────────────────────────────────────────────────────

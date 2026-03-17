@@ -246,6 +246,21 @@ document.addEventListener('DOMContentLoaded', () => {
         if (key) skillNameMap[key] = badge.textContent.trim();
     });
 
+    // Collect every skill key referenced by at least one project
+    const usedSkills = new Set();
+    projectNavItems.forEach(item => {
+        const str = item.getAttribute('data-skills');
+        if (str) str.split(',').forEach(k => usedSkills.add(k.trim()));
+    });
+
+    // Hide badges not linked to any project (kept in DOM for future use)
+    document.querySelectorAll('.skill-badge').forEach(badge => {
+        const key = badge.getAttribute('data-skill');
+        if (key && !usedSkills.has(key)) {
+            badge.style.display = 'none';
+        }
+    });
+
     // Populate skill tags in each detail card using data-skills from the
     // MATCHING NAV ITEM (same index). You only need to set data-skills
     // on the sidebar nav item — detail cards don't need the attribute.

@@ -332,6 +332,7 @@ h4 {
     z-index: 1;
 }
 
+
 .hero-title {
     font-size: clamp(2.2rem, 8vw, 7rem);
     font-weight: 500;
@@ -340,6 +341,7 @@ h4 {
 }
 
 .hero-role {
+    font-family: var(--font-heading);
     font-size: clamp(1.1rem, 4vw, 3rem);
     color: var(--text-secondary);
     margin-bottom: 3rem;
@@ -599,8 +601,8 @@ h4 {
     font-weight: 500;
     letter-spacing: 0.05em;
     text-transform: uppercase;
-    color: var(--text-secondary);
-    border: 1px solid var(--border-color);
+    color: var(--accent-label);
+    border: 1px solid oklch(62% 0.11 68 / 0.35);
     border-radius: 3px;
     vertical-align: middle;
 }
@@ -896,10 +898,6 @@ h4 {
         gap: 20px;
     }
 
-    .subsection-title {
-        font-size: 1.25rem;
-    }
-
     /* ── Skills section ── */
     .skills-container {
         gap: 30px;
@@ -1022,6 +1020,55 @@ h4 {
     animation: badgePulse 0.22s cubic-bezier(0.25, 1, 0.5, 1);
 }
 
+/* Focus-visible states (keyboard navigation) */
+.nav-link:focus-visible,
+.btn:focus-visible,
+.skill-badge:focus-visible,
+.project-nav-item:focus-visible,
+.contact-badge:focus-visible {
+    outline: 2px solid var(--accent);
+    outline-offset: 3px;
+}
+
+/* View Transitions — project role morphs sidebar → detail card */
+@supports (view-transition-name: none) {
+    ::view-transition-old(root),
+    ::view-transition-new(root) {
+        animation-duration: 0.18s;
+    }
+
+    ::view-transition-group(vt-project-role) {
+        animation-duration: 0.5s;
+        animation-timing-function: cubic-bezier(0.16, 1, 0.3, 1);
+    }
+
+    ::view-transition-group(vt-project-company) {
+        animation-duration: 0.42s;
+        animation-timing-function: cubic-bezier(0.16, 1, 0.3, 1);
+    }
+
+    ::view-transition-old(vt-project-role),
+    ::view-transition-old(vt-project-company) {
+        animation: vt-fade-out 0.12s ease both;
+    }
+
+    ::view-transition-new(vt-project-role) {
+        animation: vt-fade-in 0.3s 0.15s cubic-bezier(0.16, 1, 0.3, 1) both;
+    }
+
+    ::view-transition-new(vt-project-company) {
+        animation: vt-fade-in 0.25s 0.12s cubic-bezier(0.16, 1, 0.3, 1) both;
+    }
+}
+
+@keyframes vt-fade-out {
+    to { opacity: 0; }
+}
+
+@keyframes vt-fade-in {
+    from { opacity: 0; }
+}
+
 /* Respect reduced motion */
 @media (prefers-reduced-motion: reduce) {
     *,
@@ -1031,6 +1078,12 @@ h4 {
         animation-iteration-count: 1 !important;
         transition-duration: 0.01ms !important;
         scroll-behavior: auto !important;
+    }
+
+    ::view-transition-group(*),
+    ::view-transition-old(*),
+    ::view-transition-new(*) {
+        animation-duration: 0.01ms !important;
     }
 }
 
