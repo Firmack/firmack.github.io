@@ -990,13 +990,45 @@ h4 {
 /* Scroll Animations (Intersection Observer) */
 .scroll-reveal {
     opacity: 0;
-    transform: translateY(40px);
-    transition: opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1),
-        transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+    transform: translateY(30px);
+    transition: opacity 0.7s cubic-bezier(0.16, 1, 0.3, 1),
+        transform 0.7s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
 .scroll-reveal.scrolled {
     opacity: 1;
     transform: translateY(0);
+}
+
+.scroll-reveal-delay-1 { transition-delay: 0.12s; }
+.scroll-reveal-delay-2 { transition-delay: 0.22s; }
+
+/* Navbar compact state on scroll */
+.navbar.scrolled {
+    padding: 12px 0;
+    border-bottom-color: var(--border-highlight);
+}
+
+/* Skill badge click pulse */
+@keyframes badgePulse {
+    0%   { transform: scale(1); }
+    40%  { transform: scale(0.92); }
+    100% { transform: scale(1); }
+}
+
+.skill-badge.pulse {
+    animation: badgePulse 0.22s cubic-bezier(0.25, 1, 0.5, 1);
+}
+
+/* Respect reduced motion */
+@media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+        scroll-behavior: auto !important;
+    }
 }
 

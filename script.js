@@ -40,6 +40,12 @@ if ('paintWorklet' in CSS) {
 // Set current year in footer
 document.getElementById('year').textContent = new Date().getFullYear();
 
+// --- Navbar compact on scroll ---
+const navbar = document.getElementById('navbar');
+window.addEventListener('scroll', () => {
+    navbar.classList.toggle('scrolled', window.scrollY > 60);
+}, { passive: true });
+
 // --- Mobile Navigation ---
 const hamburger = document.querySelector('.hamburger');
 const navLinks = document.querySelector('.nav-links');
@@ -113,6 +119,16 @@ projectNavItems.forEach((item, index) => {
         if (projectDetailCards[index]) {
             projectDetailCards[index].classList.add('active');
         }
+    });
+});
+
+// --- Skill badge click pulse ---
+skillBadges.forEach(badge => {
+    badge.addEventListener('click', () => {
+        badge.classList.remove('pulse');
+        void badge.offsetWidth; // force reflow to restart animation
+        badge.classList.add('pulse');
+        badge.addEventListener('animationend', () => badge.classList.remove('pulse'), { once: true });
     });
 });
 
