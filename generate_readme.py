@@ -44,8 +44,8 @@ def build_readme(soup: BeautifulSoup) -> str:
     if about_section:
         lines += ["## About Me", ""]
 
-        # Main bio block (first about-text-block inside about-content)
-        bio_block = about_section.select_one(".about-content .about-text-block")
+        # Main bio block
+        bio_block = about_section.select_one(".about-content")
         if bio_block:
             for child in bio_block.children:
                 if not hasattr(child, "name"):

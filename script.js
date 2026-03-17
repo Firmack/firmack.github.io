@@ -37,6 +37,12 @@ if ('paintWorklet' in CSS) {
     });
 }
 
+// --- Console easter egg ---
+console.log('%c SZ. ', 'background: oklch(76% 0.14 68); color: #0a0a0a; font-size: 18px; font-weight: 700; padding: 4px 8px; border-radius: 2px;');
+console.log('%cSenior Data Architect & Database Engineer', 'color: #f5f5f5; font-size: 13px;');
+console.log('%c10+ years building data systems that don\'t slow down when the business scales.', 'color: #999; font-size: 12px;');
+console.log('%c→ firmack3@gmail.com', 'color: oklch(76% 0.14 68); font-size: 12px;');
+
 // Set current year in footer
 document.getElementById('year').textContent = new Date().getFullYear();
 
@@ -86,13 +92,17 @@ const navItems = document.querySelectorAll('.nav-link');
 window.addEventListener('scroll', () => {
     let current = '';
 
-    sections.forEach(section => {
-        const sectionTop = section.offsetTop;
-        const sectionHeight = section.clientHeight;
-        if (pageYOffset >= (sectionTop - 200)) {
-            current = section.getAttribute('id');
-        }
-    });
+    // If scrolled to the bottom of the page, always activate the last section
+    const nearBottom = window.pageYOffset + window.innerHeight >= document.documentElement.scrollHeight - 50;
+    if (nearBottom && sections.length) {
+        current = sections[sections.length - 1].getAttribute('id');
+    } else {
+        sections.forEach(section => {
+            if (window.pageYOffset >= section.offsetTop - 200) {
+                current = section.getAttribute('id');
+            }
+        });
+    }
 
     navItems.forEach(li => {
         li.classList.remove('active');
@@ -100,7 +110,7 @@ window.addEventListener('scroll', () => {
             li.classList.add('active');
         }
     });
-});
+}, { passive: true });
 
 // --- Skill to Project Highlighting Logic ---
 const skillBadges = document.querySelectorAll('.skill-badge');
