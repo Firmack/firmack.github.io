@@ -1,4 +1,4 @@
-# Serhii Zelenskyi — Senior Data Architect & & Database Engineer
+# Serhii Zelenskyi — Senior Data Architect & Database Engineer
 
 > Senior Data Architect and Database Engineer with 10+ years of expertise in database performance tuning and optimization.
 

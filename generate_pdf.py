@@ -1,7 +1,7 @@
 """
 generate_pdf.py
 ---------------
-Reads README.md in the same directory and produces portfolio.pdf.
+Reads README.md and produces Serhii_Zelenskyi_CV.pdf.
 Run with:  python generate_pdf.py
 
 Requirements: pip install reportlab
@@ -21,6 +21,7 @@ try:
         Table, TableStyle, KeepTogether, PageBreak,
     )
     from reportlab.platypus.flowables import Flowable
+    from reportlab.pdfbase.pdfmetrics import stringWidth
 except ImportError:
     import sys, subprocess
     print("Installing reportlab...")
@@ -35,72 +36,123 @@ except ImportError:
         Table, TableStyle, KeepTogether, PageBreak,
     )
     from reportlab.platypus.flowables import Flowable
+    from reportlab.pdfbase.pdfmetrics import stringWidth
 
 ROOT        = Path(__file__).parent
 README_FILE = ROOT / "README.md"
 OUTPUT_FILE = ROOT / "Serhii_Zelenskyi_CV.pdf"
 
-# ── Colours ───────────────────────────────────────────────────────────────────
-C_BLACK      = colors.HexColor("#0a0a0a")
-C_DARK       = colors.HexColor("#323232")
-C_MID        = colors.HexColor("#666666")
-C_LIGHT      = colors.HexColor("#dddddd")
-C_WHITE      = colors.HexColor("#f5f5f5")
-C_LINK       = colors.HexColor("#1e64c8")
-C_BADGE_BG   = colors.HexColor("#ebebeb")
+# ── Colours ────────────────────────────────────────────────────────────────────
+C_BLACK    = colors.HexColor("#0a0a0a")
+C_DARK     = colors.HexColor("#1a1a1a")
+C_BODY     = colors.HexColor("#333333")
+C_MID      = colors.HexColor("#888888")
+C_LIGHT    = colors.HexColor("#dddddd")
+C_WHITE    = colors.HexColor("#f5f5f5")
+C_ACCENT   = colors.HexColor("#C49230")   # amber — matches website
+C_BADGE_BG = colors.HexColor("#f0f0f0")
 
 
-# ── Custom flowables ──────────────────────────────────────────────────────────
+# ── Custom flowables ───────────────────────────────────────────────────────────
 
 class HeroBlock(Flowable):
-    """Full-width black header strip with name and role."""
+    """Full-width header: name + role on left, contact items on right."""
 
-    def __init__(self, name: str, role: str, width: float):
+    def __init__(self, name: str, role: str, contacts: list, width: float, margin: float = 0):
         super().__init__()
-        self.name  = name
-        self.role  = role
-        self._w    = width
-        self.height = 48 * mm
+        self.name     = name
+        self.role     = role
+        self.contacts = contacts   # list of (label, value, url)
+        self._w       = width
+        self._margin  = margin     # page margin to bleed background left/right
+        self.height   = 50 * mm
 
     def draw(self):
         c = self.canv
+        h = self.height
+
+        m = self._margin
+        full_w = self._w + 2 * m   # full page width
+
+        # Black background — bleeds to page edges
         c.setFillColor(C_BLACK)
-        c.rect(0, 0, self._w, self.height, fill=1, stroke=0)
-        # name
+        c.rect(-m, 0, full_w, h, fill=1, stroke=0)
+
+        # Amber bottom accent bar
+        c.setFillColor(C_ACCENT)
+        c.rect(-m, 0, full_w, 2 * mm, fill=1, stroke=0)
+
+        # Amber top accent bar
+        c.rect(-m, h - 2 * mm, full_w, 2 * mm, fill=1, stroke=0)
+
+        # ── Left column: name + role ──────────────────────────────────────────
         c.setFillColor(C_WHITE)
         c.setFont("Helvetica-Bold", 26)
-        c.drawString(0, self.height - 18 * mm, self.name)
-        # role
-        c.setFillColor(C_LIGHT)
-        c.setFont("Helvetica", 12)
-        c.drawString(0, self.height - 26 * mm, self.role)
+        c.drawString(0, h - 20 * mm, self.name)
+
+        c.setFillColor(C_ACCENT)
+        c.setFont("Helvetica", 11)
+        c.drawString(0, h - 28 * mm, self.role)
+
+        # ── Vertical separator ────────────────────────────────────────────────
+        sep_x = self._w * 0.56
+        c.setStrokeColor(colors.HexColor("#2a2a2a"))
+        c.setLineWidth(0.5)
+        c.line(sep_x, 5 * mm, sep_x, h - 5 * mm)
+
+        # ── Right column: contact items ───────────────────────────────────────
+        n = len(self.contacts)
+        block_h = n * 5.5 * mm
+        # vertically center the block in the hero
+        y = (h - block_h) / 2 + block_h - 3 * mm
+
+        for label, value, url in self.contacts:
+            # amber bullet dot
+            c.setFillColor(C_ACCENT)
+            c.circle(sep_x + 4 * mm, y + 1.5 * mm, 0.8 * mm, fill=1, stroke=0)
+
+            # amber label (small caps style)
+            c.setFont("Helvetica-Bold", 6.5)
+            c.drawString(sep_x + 7 * mm, y, label.upper())
+
+            # white value, right-aligned
+            c.setFillColor(C_WHITE)
+            c.setFont("Helvetica", 8)
+            c.drawRightString(self._w, y, value)
+
+            y -= 5.5 * mm
 
 
 class SectionTitle(Flowable):
-    """Uppercase grey section label + horizontal rule."""
+    """Amber left bar + uppercase section label + hairline rule."""
 
     def __init__(self, text: str, width: float):
         super().__init__()
         self._text = text.upper()
         self._w    = width
-        self.height = 10 * mm
+        self.height = 11 * mm
 
     def draw(self):
         c = self.canv
-        c.setFillColor(C_MID)
+        # Amber left accent bar
+        c.setFillColor(C_ACCENT)
+        c.rect(0, 3 * mm, 2.5 * mm, 5.5 * mm, fill=1, stroke=0)
+        # Label
+        c.setFillColor(C_DARK)
         c.setFont("Helvetica-Bold", 9)
-        c.drawString(0, 4 * mm, self._text)
+        c.drawString(5 * mm, 5.5 * mm, self._text)
+        # Hairline rule
         c.setStrokeColor(C_LIGHT)
         c.setLineWidth(0.5)
         c.line(0, 2 * mm, self._w, 2 * mm)
 
 
 class BadgeRow(Flowable):
-    """Renders skill chips that auto-wrap across lines."""
+    """Skill chips that auto-wrap across lines."""
 
-    PAD_X  = 4 * mm
-    H      = 6 * mm
-    GAP    = 2 * mm
+    PAD_X  = 4   * mm
+    H      = 6   * mm
+    GAP    = 2   * mm
     LINE_G = 2.5 * mm
 
     def __init__(self, badges: list, width: float):
@@ -109,8 +161,7 @@ class BadgeRow(Flowable):
         self._w      = width
         self.height  = self._calc_height()
 
-    def _calc_height(self):
-        from reportlab.pdfbase.pdfmetrics import stringWidth
+    def _calc_height(self) -> float:
         x, rows = 0.0, 1
         for b in self._badges:
             bw = stringWidth(b, "Helvetica", 8) + self.PAD_X * 2
@@ -121,7 +172,6 @@ class BadgeRow(Flowable):
         return rows * (self.H + self.LINE_G) + self.LINE_G
 
     def draw(self):
-        from reportlab.pdfbase.pdfmetrics import stringWidth
         c = self.canv
         c.setFont("Helvetica", 8)
         x, y = 0.0, self.height - self.H - self.LINE_G
@@ -136,41 +186,43 @@ class BadgeRow(Flowable):
             c.setStrokeColor(C_LIGHT)
             c.setLineWidth(0.3)
             c.roundRect(x, y, bw, self.H, 1.5 * mm, fill=1, stroke=1)
-            c.setFillColor(C_DARK)
+            c.setFillColor(C_BODY)
             c.drawString(x + self.PAD_X, y + 1.8 * mm, b)
             x += bw + self.GAP
 
 
-# ── Styles ────────────────────────────────────────────────────────────────────
+# ── Styles ─────────────────────────────────────────────────────────────────────
 
-def make_styles():
+def make_styles() -> dict:
     base = getSampleStyleSheet()
 
     def ps(**kw) -> ParagraphStyle:
         return ParagraphStyle("_", parent=base["Normal"], **kw)
 
     return {
-        "tagline":   ps(fontSize=9,  textColor=C_MID,  leading=13, spaceBefore=4),
-        "body":      ps(fontSize=9.5, textColor=C_DARK, leading=14, spaceBefore=2),
-        "bullet":    ps(fontSize=9,  textColor=C_DARK, leading=13,
+        "tagline":   ps(fontSize=9,   textColor=C_MID,    leading=13, spaceBefore=4),
+        "body":      ps(fontSize=9.5, textColor=C_BODY,   leading=14, spaceBefore=2),
+        "bullet":    ps(fontSize=9,   textColor=C_BODY,   leading=13,
                         leftIndent=10, firstLineIndent=-10, spaceBefore=1),
-        "info_lab":  ps(fontSize=9,  textColor=C_DARK, leading=13, fontName="Helvetica-Bold"),
-        "info_val":  ps(fontSize=9,  textColor=C_DARK, leading=13),
-        "role_h":    ps(fontSize=11, textColor=C_BLACK, leading=14,
-                        fontName="Helvetica-Bold", spaceBefore=4),
-        "company":   ps(fontSize=9.5, textColor=C_DARK, leading=12),
-        "date":      ps(fontSize=8.5, textColor=C_MID,  leading=12, fontName="Helvetica-Oblique"),
-        "grp_title": ps(fontSize=9,  textColor=C_DARK, leading=12,
-                        fontName="Helvetica-Bold", spaceBefore=4),
-        "contact_l": ps(fontSize=9,  textColor=C_DARK, leading=13,
+        "info_lab":  ps(fontSize=9,   textColor=C_MID,    leading=13,
                         fontName="Helvetica-Bold"),
-        "contact_v": ps(fontSize=9,  textColor=C_LINK, leading=13),
-        "copyright": ps(fontSize=8,  textColor=C_MID,  leading=11,
+        "info_val":  ps(fontSize=9,   textColor=C_BODY,   leading=13),
+        "role_h":    ps(fontSize=11,  textColor=C_DARK,   leading=14,
+                        fontName="Helvetica-Bold", spaceBefore=4),
+        "company":   ps(fontSize=9.5, textColor=C_BODY,   leading=12),
+        "date":      ps(fontSize=8.5, textColor=C_MID,    leading=12,
+                        fontName="Helvetica-Oblique"),
+        "grp_title": ps(fontSize=9,   textColor=C_DARK,   leading=12,
+                        fontName="Helvetica-Bold", spaceBefore=4),
+        "contact_l": ps(fontSize=9,   textColor=C_DARK,   leading=13,
+                        fontName="Helvetica-Bold"),
+        "contact_v": ps(fontSize=9,   textColor=C_ACCENT, leading=13),
+        "copyright": ps(fontSize=8,   textColor=C_MID,    leading=11,
                         alignment=TA_CENTER, fontName="Helvetica-Oblique"),
     }
 
 
-# ── README parser ─────────────────────────────────────────────────────────────
+# ── README parser ──────────────────────────────────────────────────────────────
 
 def clean(s: str) -> str:
     s = re.sub(r"\*\*(.*?)\*\*", r"\1", s)
@@ -180,15 +232,14 @@ def clean(s: str) -> str:
 
 
 def markup(s: str) -> str:
-    """Convert markdown bold/italic to ReportLab XML tags, preserving formatting."""
+    """Convert markdown bold/italic to ReportLab XML tags."""
     s = re.sub(r"\*\*(.*?)\*\*", r"<b>\1</b>", s)
     s = re.sub(r"\*(.*?)\*",     r"<i>\1</i>", s)
     s = re.sub(r"`([^`]+)`",     r"\1", s)
     return re.sub(r"\s+", " ", s).strip()
 
 
-def split_em(s: str):
-    """Split on em-dash or regular dash (role — company)."""
+def split_em(s: str) -> list:
     for sep in [" \u2014 ", " - "]:
         if sep in s:
             return [p.strip() for p in s.split(sep, 1)]
@@ -218,10 +269,12 @@ def parse_readme(text: str) -> dict:
             if "about" in section:
                 i += 1
                 para_buf = []
+
                 def flush_para():
                     if para_buf:
                         data["about"].append(("para", markup(" ".join(para_buf))))
                         para_buf.clear()
+
                 while i < len(lines) and not lines[i].startswith("## "):
                     ln = lines[i].rstrip()
                     if ln.startswith("- "):
@@ -263,7 +316,6 @@ def parse_readme(text: str) -> dict:
                         p = split_em(ln[4:])
                         role_s    = p[0]
                         company_s = p[1] if len(p) > 1 else ""
-                        # next non-empty line = date
                         j, date_s = i + 1, ""
                         while j < len(lines):
                             dl = lines[j].rstrip()
@@ -299,7 +351,7 @@ def parse_readme(text: str) -> dict:
     return data
 
 
-# ── PDF builder ───────────────────────────────────────────────────────────────
+# ── PDF builder ────────────────────────────────────────────────────────────────
 
 def build_story(data: dict, page_w: float, margins: float) -> list:
     usable = page_w - 2 * margins
@@ -307,7 +359,7 @@ def build_story(data: dict, page_w: float, margins: float) -> list:
     story = []
 
     # Hero
-    story.append(HeroBlock(data["name"], data["role"], usable))
+    story.append(HeroBlock(data["name"], data["role"], data["contact"], usable, margins))
     story.append(Spacer(1, 5 * mm))
 
     # Tagline
@@ -315,11 +367,12 @@ def build_story(data: dict, page_w: float, margins: float) -> list:
         story.append(Paragraph(data["tagline"], S["tagline"]))
         story.append(Spacer(1, 3 * mm))
 
-    # About Me
+    # About
     story.append(SectionTitle("About Me", usable))
+    story.append(Spacer(1, 1 * mm))
     for kind, content in data["about"]:
         if kind == "para" and content:
-            story.append(Paragraph(content, S["company"]))
+            story.append(Paragraph(content, S["body"]))
             story.append(Spacer(1, 1 * mm))
         elif kind == "bullet":
             story.append(Paragraph(f"\u2013\u00a0\u00a0{content}", S["bullet"]))
@@ -337,6 +390,7 @@ def build_story(data: dict, page_w: float, margins: float) -> list:
     # Skills
     story.append(PageBreak())
     story.append(SectionTitle("Skills & Tools", usable))
+    story.append(Spacer(1, 1 * mm))
     for grp_name, badges in data["skills"]:
         if not badges:
             continue
@@ -347,6 +401,7 @@ def build_story(data: dict, page_w: float, margins: float) -> list:
 
     # Experience
     story.append(SectionTitle("Experience", usable))
+    story.append(Spacer(1, 1 * mm))
     for idx, (role, company, date, bullets) in enumerate(data["jobs"]):
         block = [
             Paragraph(role, S["role_h"]),
@@ -358,24 +413,16 @@ def build_story(data: dict, page_w: float, margins: float) -> list:
             block.append(Paragraph(f"\u2013\u00a0\u00a0{b}", S["bullet"]))
         if idx < len(data["jobs"]) - 1:
             block.append(Spacer(1, 3 * mm))
-            block.append(HRFlowable(width="100%", thickness=0.5,
-                                    color=C_LIGHT, spaceAfter=2 * mm))
+            block.append(HRFlowable(
+                width="100%", thickness=0.5, color=C_LIGHT, spaceAfter=2 * mm
+            ))
         story.append(KeepTogether(block))
 
-    # Contact
-    story.append(SectionTitle("Contact", usable))
-    for label, value, url in data["contact"]:
-        link = f'<link href="{url}" color="#1e64c8">{value}</link>' if url else value
-        row = Table(
-            [[Paragraph(label, S["contact_l"]), Paragraph(link, S["contact_v"])]],
-            colWidths=[40 * mm, usable - 40 * mm],
-        )
-        row.setStyle(TableStyle([("VALIGN", (0, 0), (-1, -1), "MIDDLE")]))
-        story.append(row)
-
-    # Copyright
+    # Footer
     story.append(Spacer(1, 8 * mm))
-    story.append(Paragraph("\u00a9 Serhii Zelenskyi. All rights reserved.", S["copyright"]))
+    story.append(Paragraph(
+        "\u00a9 Serhii Zelenskyi. All rights reserved.", S["copyright"]
+    ))
     return story
 
 
@@ -393,7 +440,7 @@ def main():
         pagesize=A4,
         leftMargin=margin, rightMargin=margin,
         topMargin=margin,  bottomMargin=margin,
-        title=f"{data['name']} — Portfolio",
+        title=f"{data['name']} \u2014 Portfolio",
         author=data["name"],
     )
 
