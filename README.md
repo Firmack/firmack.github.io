@@ -6,35 +6,31 @@
 
 ## About Me
 
-I am a Senior Data Architect and Database Engineer with 10+ years of
-                        expertise specializing in database performance tuning and architectural
-                    optimization.
+Senior Data Architect and Database Engineer with 10+ years of
+                        expertise in database performance tuning and architectural optimization.
 
-I architect data systems that hold up under pressure - high-volume warehouses, complex
-                    pipelines, and databases that don't slow down when the business scales.
-                    I've moved from writing optimised queries to defining the
-                    standards teams write by.
+I architect data systems that hold up under pressure — high-volume warehouses, complex
+                    pipelines, databases that don't slow down when the business scales.
+                    I've gone from writing optimised queries to defining the standards teams write by.
 
-Most of my work lives at the intersection of engineering rigor and delivery speed:
+My work lives at the intersection of engineering rigor and delivery speed:
 
 - **Design** ETL/ELT pipelines that actually run on time
 - **Migrate** production databases without drama
-- **Build** the kind of data infrastructure that lets analysts answer questions
-                        fast
-- **Automate** CI/CD for data teams to move code from local to production in
-                        minutes.
+- **Build** data infrastructure that lets analysts answer questions fast
+- **Automate** CI/CD for data teams to ship from local to production in minutes
 
-I've led database teams, mentored engineers at every level, and collaborated closely with
-                    stakeholders to turn messy data problems into clean, maintainable solutions.
+I've led database teams, mentored engineers at every level, and turned messy data problems
+                    into clean, maintainable solutions.
 
-If a query is slow, a pipeline is fragile, or a schema needs a rethink - that's my kind of
+If a query is slow, a pipeline is fragile, or a schema needs a rethink — that's my kind of
                     problem.
 
 ## Skills & Tools
 
 ### Technical Expertise
 
-`MSSQL` `PostgreSQL` `Google BigQuery` `Snowflake` `Airbyte` `Azure DevOps` `ETL/ELT` `Data Modeling` `DWH` `CI/CD` `Database Migration` `Performance Monitoring` `Git` `Python` `Parquet` `CSV` `JSON` `XML` `DBT` `SSIS` `SSAS` `SSRS` `SSDT` `PowerBI` `BIML`
+`MSSQL` `PostgreSQL` `AWS` `GCP` `Google BigQuery` `Snowflake` `Airbyte` `Azure DevOps` `ETL/ELT` `Data Modeling` `DWH` `CI/CD` `Database Migration` `Performance Monitoring` `Git` `Python` `Parquet` `JSON` `DBT` `SSIS` `SSAS` `SSRS` `SSDT` `PowerBI` `BIML`
 
 ### Leadership & Domains
 
@@ -47,14 +43,14 @@ If a query is slow, a pipeline is fragile, or a schema needs a rethink - that's 
 ### Data Architect — MTS (Mine Tech Services) | Halton, UK
 **July 2024 - Present**
 
-- Led performance optimization initiatives for enterprise database systems, achieving
-                                    significant query performance improvements.
-- Developed and introduced comprehensive code standards and best practices for
-                                    database development teams.
-- Designed and implemented high-performance ETL processes for seamless data
-                                    extraction, transformation, and loading.
-- Conducted advanced database performance tuning and troubleshooting for
-                                    mission-critical applications.
+- Led database performance optimization across enterprise systems, delivering
+                                    measurable query improvements.
+- Developed and introduced code standards and best practices for database
+                                    development teams.
+- Designed and implemented ETL pipelines for high-volume data ingestion and
+                                    transformation.
+- Performed database performance tuning and troubleshooting for production
+                                    applications.
 - Mentored development teams on optimization techniques and database best practices.
 - Architected scalable multi-tenant data models supporting complex mining telemetry
                                     and operational datasets across multiple sites.
@@ -68,28 +64,25 @@ If a query is slow, a pipeline is fragile, or a schema needs a rethink - that's 
 ### Senior Database Engineer — MTS (Mine Tech Services) | Halton, UK
 **January 2023 - August 2024**
 
-- Specialized in database tuning and optimization.
-- Developed and maintained robust ETL processes.
-- Implemented CI/CD pipelines for database deployments.
-- Designed complex database structures with focus on performance and scalability for
-                                    high-volume applications.
-- Created advanced SQL queries, stored procedures, optimized for maximum performance.
-- Led database development teams, fostering collaboration and knowledge sharing for
-                                    continuous improvement.
+- Developed and maintained ETL pipelines for high-volume data processing.
+- Implemented CI/CD pipelines for automated database deployments.
+- Designed database structures optimised for performance and scalability under
+                                    high-volume load.
+- Authored SQL queries and stored procedures optimised for performance.
+- Led database development teams, driving collaboration and knowledge sharing.
 
 ---
 
 ### Senior Database Engineer — Intetics | Kyiv, Ukraine
 **August 2020 - January 2023**
 
-- Delivered extensive database performance optimization across multiple enterprise
-                                    systems.
-- Architected and implemented complex SQL queries and stored procedures with
-                                    performance-first approach.
+- Delivered database performance optimization across multiple enterprise systems.
+- Authored complex SQL queries and stored procedures with a performance-first
+                                    approach.
 - Optimized data modeling and schema design for improved query performance and storage
                                     efficiency.
-- Developed ETL workflows focused on performance and data transfer optimization.
-- Facilitated cross-functional collaboration to solve complex database performance
+- Developed ETL workflows focused on performance and data transfer throughput.
+- Collaborated cross-functionally to resolve complex database performance
                                     challenges.
 - Assessed legacy database structures and defined migration strategies to modernise
                                     architecture while preserving business continuity.
@@ -99,49 +92,41 @@ If a query is slow, a pipeline is fragile, or a schema needs a rethink - that's 
 ### Independent Data Consultant — Self-Employed — parallel to main roles
 **January 2020 – Present**
 
-- Provided expert database consulting and advisory services to multiple clients across
-                                    various industries.
-- Designed and optimised data architectures for small-to-medium businesses on a
-                                    part-time basis.
-- Delivered ETL pipeline improvements and database performance tuning alongside
-                                    full-time employment.
-- Built trusted advisor relationships with clients, translating complex technical
-                                    concepts into clear business outcomes and actionable recommendations.
+- Delivered database consulting and advisory services across multiple industries.
+- Designed and optimised data architectures for small-to-medium businesses.
+- Built trusted advisor relationships, translating complex technical concepts into
+                                    clear business outcomes.
 - Refactored legacy database codebases for multiple clients, eliminating redundant
                                     logic, consolidating duplicated procedures, and improving long-term maintainability.
-- Introduced SQL coding standards and naming conventions across client environments,
-                                    establishing a consistent development baseline for ongoing and future work.
+- Introduced SQL coding standards and naming conventions across client
+                                    environments.
 - Delivered targeted query and schema optimisations that reduced execution times and
-                                    resource consumption, providing measurable performance gains within constrained
-                                    consulting
-                                    timeframes.
+                                    resource consumption within constrained consulting timeframes.
 
 ---
 
 ### Team Lead Senior Database Developer — SoftServe | Kyiv, Ukraine
 **November 2018 - August 2020**
 
-- Managed high-performance SQL query optimization and database tuning initiatives.
+- Led SQL query optimization and database tuning initiatives across
+                                    business-critical systems.
 - Directed database architecture and modeling projects with emphasis on scalability
                                     and performance.
-- Optimized ETL workflows for seamless data transformation and improved processing
-                                    speeds.
+- Optimized ETL workflows for improved data transformation throughput.
 - Integrated databases into CI/CD pipelines with automated performance testing and
                                     deployment optimization.
-- Mentored database development teams on advanced optimization techniques and
-                                    performance best practices.
+- Mentored database development teams on optimization techniques and best
+                                    practices.
 - Led a team of database developers, overseeing task allocation, code reviews, and
                                     delivery planning to ensure consistent output quality and on-time releases.
 - Acted as the primary escalation point for complex technical issues, guiding the team
                                     through root cause analysis and resolution under production pressure.
-- Developed and implemented database performance monitoring and alerting systems to
-                                    proactively identify and address performance bottlenecks.
+- Developed database performance monitoring and alerting systems to proactively
+                                    identify and address bottlenecks.
 - Delivered database solutions compliant with healthcare data sensitivity
                                     requirements, ensuring appropriate access controls and audit trail implementation.
 - Introduced peer code review processes for all database changes, significantly
                                     reducing defect rates and improving knowledge sharing across the team.
-- Developed and implemented database performance monitoring and alerting systems to
-                                    proactively identify and address performance bottlenecks.
 
 ---
 
@@ -157,11 +142,8 @@ If a query is slow, a pipeline is fragile, or a schema needs a rethink - that's 
 ### Senior ETL Developer — AltaReturn | Kyiv, Ukraine
 **March 2018 - August 2018**
 
-- Specialized in ETL process optimization for efficient data movement and
-                                    transformation.
-- Designed and developed high-performance ETL processes with focus on data pipeline
-                                    optimization.
-- Optimized data warehousing solutions using advanced SQL and performance tuning
+- Designed high-performance ETL processes with focus on pipeline efficiency.
+- Optimized data warehousing solutions using SQL and performance tuning
                                     techniques.
 - Collaborated with stakeholders to deliver optimized data integration and reporting
                                     solutions.
@@ -173,11 +155,11 @@ If a query is slow, a pipeline is fragile, or a schema needs a rethink - that's 
 ### Database Developer — DataArt | Kyiv, Ukraine
 **July 2016 - March 2018**
 
-- Performed database optimization and performance tuning for optimal data management
+- Performed database optimization and performance tuning across insurance
                                     systems.
-- Implemented SQL query optimization and database performance enhancement techniques.
-- Collaborated with cross-functional teams to meet database requirements with
-                                    performance-focused solutions.
+- Implemented SQL query optimization and performance tuning techniques.
+- Collaborated with cross-functional teams to deliver performance-focused database
+                                    solutions.
 - Contributed to data modeling and schema design with emphasis on performance
                                     optimization.
 - Designed and developed SSAS multidimensional cubes to support analytical reporting

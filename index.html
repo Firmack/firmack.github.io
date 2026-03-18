@@ -10,9 +10,9 @@
     <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600&family=Outfit:wght@100..900&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;600&family=Outfit:wght@100..900&display=swap" rel="stylesheet">
     <!-- CSS -->
-    <link rel="stylesheet" href="style.css?v=11">
+    <link rel="stylesheet" href="style.css?v=16">
     
 </head>
 
@@ -25,7 +25,7 @@
             <ul class="nav-links">
                 <li><a href="#about" class="nav-link">About Me</a></li>
                 <li><a href="#skills" class="nav-link">Skills and Tools</a></li>
-                <li><a href="#projects" class="nav-link">Projects</a></li>
+                <li><a href="#projects" class="nav-link">Experience</a></li>
 
                 <li><a href="#contact" class="nav-link">Contact</a></li>
             </ul>
@@ -44,7 +44,7 @@
             <h1 class="hero-title fade-in-up delay-1">Serhii Zelenskyi</h1>
             <h2 class="hero-role fade-in-up delay-2">Senior Data Architect<br>& Database Engineer</h2>
             <div class="hero-actions fade-in-up delay-3">
-                <a href="#projects" class="btn btn-primary">View Projects</a>
+                <a href="#projects" class="btn btn-primary">View Experience</a>
                 <a href="#contact" class="btn btn-secondary">Get in Touch</a>
             </div>
         </div>
@@ -54,18 +54,16 @@
     <section id="about" class="section-spacing bg-darker">
         <div class="container grid-layout">
             <div class="section-header">
-                <h2 class="section-title">About Me</h2>
+                <h2 class="section-title" data-num="01">About Me</h2>
             </div>
             <div class="about-content text-large scroll-reveal">
-                <p>I am a <strong>Senior Data Architect and Database Engineer</strong> with <strong>10+ years of
-                        expertise</strong> specializing in database performance tuning and architectural
-                    optimization.
+                <p><strong>Senior Data Architect and Database Engineer</strong> with <strong>10+ years of
+                        expertise</strong> in database performance tuning and architectural optimization.
                 </p>
-                <p>I architect data systems that hold up under pressure - high-volume warehouses, complex
-                    pipelines, and databases that don't slow down when the business scales.
-                    I've moved from writing optimised queries to defining the
-                    standards teams write by.</p>
-                <p>Most of my work lives at the intersection of engineering rigor and delivery speed:</p>
+                <p>I architect data systems that hold up under pressure — high-volume warehouses, complex
+                    pipelines, databases that don't slow down when the business scales.
+                    I've gone from writing optimised queries to defining the standards teams write by.</p>
+                <p>My work lives at the intersection of engineering rigor and delivery speed:</p>
                 <ul>
                     <li>
                         <strong>Design</strong> ETL/ELT pipelines that actually run on time
@@ -74,24 +72,20 @@
                         <strong>Migrate</strong> production databases without drama
                     </li>
                     <li>
-                        <strong>Build</strong> the kind of data infrastructure that lets analysts answer questions
-                        fast
+                        <strong>Build</strong> data infrastructure that lets analysts answer questions fast
                     </li>
                     <li>
-                        <strong>Automate</strong> CI/CD for data teams to move code from local to production in
-                        minutes.
+                        <strong>Automate</strong> CI/CD for data teams to ship from local to production in minutes
                     </li>
                 </ul>
-                <p>I've led database teams, mentored engineers at every level, and collaborated closely with
-                    stakeholders to turn messy data problems into clean, maintainable solutions.</p>
+                <p>I've led database teams, mentored engineers at every level, and turned messy data problems
+                    into clean, maintainable solutions.</p>
                 <p>
-                    If a query is slow, a pipeline is fragile, or a schema needs a rethink - that's my kind of
+                    If a query is slow, a pipeline is fragile, or a schema needs a rethink — that's my kind of
                     problem.
                 </p>
-
             </div>
 
-            <div></div>
             <div class="about-meta scroll-reveal scroll-reveal-delay-1">
                 <div class="about-meta-item">
                     <span class="about-meta-label">Location</span>
@@ -114,9 +108,8 @@
     <section id="skills" class="section-spacing">
         <div class="container">
             <div class="section-header">
-                <h2 class="section-title">Skills & Tools</h2>
-                <p class="section-desc">Clicking on any skill below will highlight the projects where I utilized it
-                    heavily.</p>
+                <h2 class="section-title" data-num="02">Skills & Tools</h2>
+                <p class="section-desc">Click any skill to filter the experience where I applied it.</p>
             </div>
 
             <div class="skills-container scroll-reveal" id="skills-container">
@@ -145,9 +138,7 @@
                         <div class="skill-badge" data-skill="golang">GOLang</div>
                         <div class="skill-badge" data-skill="typescript">TypeScript</div>
                         <div class="skill-badge" data-skill="parquet">Parquet</div>
-                        <div class="skill-badge" data-skill="csv">CSV</div>
                         <div class="skill-badge" data-skill="json">JSON</div>
-                        <div class="skill-badge" data-skill="xml">XML</div>
                         <div class="skill-badge" data-skill="cloud-run">GCP Cloud Run</div>
                         <div class="skill-badge" data-skill="serverless">Serverless</div>
                         <div class="skill-badge" data-skill="aws-rds">AWS RDS</div>
@@ -188,7 +179,7 @@
     <section id="projects" class="section-spacing bg-darker">
         <div class="container">
             <div class="section-header">
-                <h2 class="section-title">Experience & Projects</h2>
+                <h2 class="section-title" data-num="03">Experience & Projects</h2>
             </div>
 
             <div class="projects-layout">
@@ -196,7 +187,7 @@
                 <div class="projects-sidebar scroll-reveal">
 
                     <div class="project-nav-item active"
-                        data-skills="mining-technology,mssql,snowflake,dbt,ssis,mentoring,code-standards,bigquery,csv,json,xml,parquet,xml,tech-leadership,etl-elt,data-modeling,performance,ssdt,cicd,azure-devops,stakeholder-comm,git,dwh">
+                        data-skills="mining-technology,mssql,snowflake,dbt,ssis,mentoring,code-standards,gcp,bigquery,csv,json,xml,parquet,xml,tech-leadership,etl-elt,data-modeling,performance,ssdt,cicd,azure-devops,stakeholder-comm,git,dwh">
                         <h3 class="nav-project-role">Data Architect</h3>
                         <span class="nav-project-company">MTS (Mine Tech Services)</span>
                         <span class="nav-project-date">July 2024 - Present</span>
@@ -217,10 +208,10 @@
                     </div>
 
                     <div class="project-nav-item"
-                        data-skills="mssql,postgresql,etl-elt,data-modeling,dwh,db-migration,performance,python,git,ssis,airbyte,dwh">
+                        data-skills="mssql,postgresql,etl-elt,data-modeling,dwh,db-migration,gcp,aws,performance,python,git,ssis,airbyte,dwh">
                         <h3 class="nav-project-role">Independent Data Consultant</h3>
                         <span class="nav-project-company">Self-Employed</span>
-                        <span class="nav-project-date">January 2020 – Present <span
+                        <span class="nav-project-date">January 2020 - Present <span
                                 class="nav-project-type">Parallel</span></span>
                     </div>
 
@@ -278,14 +269,14 @@
                         </div>
                         <div class="project-content">
                             <ul class="project-achievements">
-                                <li>Led performance optimization initiatives for enterprise database systems, achieving
-                                    significant query performance improvements.</li>
-                                <li>Developed and introduced comprehensive code standards and best practices for
-                                    database development teams.</li>
-                                <li>Designed and implemented high-performance ETL processes for seamless data
-                                    extraction, transformation, and loading.</li>
-                                <li>Conducted advanced database performance tuning and troubleshooting for
-                                    mission-critical applications.</li>
+                                <li>Led database performance optimization across enterprise systems, delivering
+                                    measurable query improvements.</li>
+                                <li>Developed and introduced code standards and best practices for database
+                                    development teams.</li>
+                                <li>Designed and implemented ETL pipelines for high-volume data ingestion and
+                                    transformation.</li>
+                                <li>Performed database performance tuning and troubleshooting for production
+                                    applications.</li>
                                 <li>Mentored development teams on optimization techniques and database best practices.
                                 </li>
                                 <li>Architected scalable multi-tenant data models supporting complex mining telemetry
@@ -311,15 +302,12 @@
                         </div>
                         <div class="project-content">
                             <ul class="project-achievements">
-                                <li>Specialized in database tuning and optimization.</li>
-                                <li>Developed and maintained robust ETL processes.</li>
-                                <li>Implemented CI/CD pipelines for database deployments.</li>
-                                <li>Designed complex database structures with focus on performance and scalability for
-                                    high-volume applications.</li>
-                                <li>Created advanced SQL queries, stored procedures, optimized for maximum performance.
-                                </li>
-                                <li>Led database development teams, fostering collaboration and knowledge sharing for
-                                    continuous improvement.</li>
+                                <li>Developed and maintained ETL pipelines for high-volume data processing.</li>
+                                <li>Implemented CI/CD pipelines for automated database deployments.</li>
+                                <li>Designed database structures optimised for performance and scalability under
+                                    high-volume load.</li>
+                                <li>Authored SQL queries and stored procedures optimised for performance.</li>
+                                <li>Led database development teams, driving collaboration and knowledge sharing.</li>
                             </ul>
                             <div class="project-skills"></div>
                         </div>
@@ -337,14 +325,13 @@
                         </div>
                         <div class="project-content">
                             <ul class="project-achievements">
-                                <li>Delivered extensive database performance optimization across multiple enterprise
-                                    systems.</li>
-                                <li>Architected and implemented complex SQL queries and stored procedures with
-                                    performance-first approach.</li>
+                                <li>Delivered database performance optimization across multiple enterprise systems.</li>
+                                <li>Authored complex SQL queries and stored procedures with a performance-first
+                                    approach.</li>
                                 <li>Optimized data modeling and schema design for improved query performance and storage
                                     efficiency.</li>
-                                <li>Developed ETL workflows focused on performance and data transfer optimization.</li>
-                                <li>Facilitated cross-functional collaboration to solve complex database performance
+                                <li>Developed ETL workflows focused on performance and data transfer throughput.</li>
+                                <li>Collaborated cross-functionally to resolve complex database performance
                                     challenges.</li>
                                 <li>Assessed legacy database structures and defined migration strategies to modernise
                                     architecture while preserving business continuity.</li>
@@ -364,24 +351,18 @@
                         </div>
                         <div class="project-content">
                             <ul class="project-achievements">
-                                <li>Provided expert database consulting and advisory services to multiple clients across
-                                    various industries.</li>
-                                <li>Designed and optimised data architectures for small-to-medium businesses on a
-                                    part-time basis.</li>
-                                <li>Delivered ETL pipeline improvements and database performance tuning alongside
-                                    full-time employment.</li>
-                                <li>Built trusted advisor relationships with clients, translating complex technical
-                                    concepts into clear business outcomes and actionable recommendations.</li>
+                                <li>Delivered database consulting and advisory services across multiple industries.</li>
+                                <li>Designed and optimised data architectures for small-to-medium businesses.</li>
+                                <li>Built trusted advisor relationships, translating complex technical concepts into
+                                    clear business outcomes.</li>
                                 <li>Refactored legacy database codebases for multiple clients, eliminating redundant
                                     logic, consolidating duplicated procedures, and improving long-term maintainability.
                                 </li>
-                                <li>Introduced SQL coding standards and naming conventions across client environments,
-                                    establishing a consistent development baseline for ongoing and future work.</li>
+                                <li>Introduced SQL coding standards and naming conventions across client
+                                    environments.</li>
                                 <li>Delivered targeted query and schema optimisations that reduced execution times and
-                                    resource consumption, providing measurable performance gains within constrained
-                                    consulting
-                                    timeframes.</li>
-                                </ul>
+                                    resource consumption within constrained consulting timeframes.</li>
+                            </ul>
                             <div class="project-skills"></div>
                         </div>
                     </div>
@@ -397,31 +378,26 @@
                         </div>
                         <div class="project-content">
                             <ul class="project-achievements">
-                                <li>Managed high-performance SQL query optimization and database tuning initiatives.
-                                </li>
+                                <li>Led SQL query optimization and database tuning initiatives across
+                                    business-critical systems.</li>
                                 <li>Directed database architecture and modeling projects with emphasis on scalability
                                     and performance.</li>
-                                <li>Optimized ETL workflows for seamless data transformation and improved processing
-                                    speeds.</li>
+                                <li>Optimized ETL workflows for improved data transformation throughput.</li>
                                 <li>Integrated databases into CI/CD pipelines with automated performance testing and
                                     deployment optimization.</li>
-                                <li>Mentored database development teams on advanced optimization techniques and
-                                    performance best practices.</li>
+                                <li>Mentored database development teams on optimization techniques and best
+                                    practices.</li>
                                 <li>Led a team of database developers, overseeing task allocation, code reviews, and
                                     delivery planning to ensure consistent output quality and on-time releases.</li>
                                 <li>Acted as the primary escalation point for complex technical issues, guiding the team
                                     through root cause analysis and resolution under production pressure.</li>
-                                <li>Developed and implemented database performance monitoring and alerting systems to
-                                    proactively identify and address performance bottlenecks.</li>
+                                <li>Developed database performance monitoring and alerting systems to proactively
+                                    identify and address bottlenecks.</li>
                                 <li>Delivered database solutions compliant with healthcare data sensitivity
                                     requirements, ensuring appropriate access controls and audit trail implementation.
                                 </li>
                                 <li>Introduced peer code review processes for all database changes, significantly
-                                    reducing defect rates and improving knowledge sharing across the team.
-                                </li>
-                                <li>Developed and implemented database performance monitoring and alerting systems to
-                                    proactively identify and address performance bottlenecks.
-                                </li>
+                                    reducing defect rates and improving knowledge sharing across the team.</li>
                             </ul>
                             <div class="project-skills"></div>
                         </div>
@@ -459,11 +435,8 @@
                         </div>
                         <div class="project-content">
                             <ul class="project-achievements">
-                                <li>Specialized in ETL process optimization for efficient data movement and
-                                    transformation.</li>
-                                <li>Designed and developed high-performance ETL processes with focus on data pipeline
-                                    optimization.</li>
-                                <li>Optimized data warehousing solutions using advanced SQL and performance tuning
+                                <li>Designed high-performance ETL processes with focus on pipeline efficiency.</li>
+                                <li>Optimized data warehousing solutions using SQL and performance tuning
                                     techniques.</li>
                                 <li>Collaborated with stakeholders to deliver optimized data integration and reporting
                                     solutions.</li>
@@ -485,12 +458,11 @@
                         </div>
                         <div class="project-content">
                             <ul class="project-achievements">
-                                <li>Performed database optimization and performance tuning for optimal data management
+                                <li>Performed database optimization and performance tuning across insurance
                                     systems.</li>
-                                <li>Implemented SQL query optimization and database performance enhancement techniques.
-                                </li>
-                                <li>Collaborated with cross-functional teams to meet database requirements with
-                                    performance-focused solutions.</li>
+                                <li>Implemented SQL query optimization and performance tuning techniques.</li>
+                                <li>Collaborated with cross-functional teams to deliver performance-focused database
+                                    solutions.</li>
                                 <li>Contributed to data modeling and schema design with emphasis on performance
                                     optimization.</li>
                                 <li>Designed and developed SSAS multidimensional cubes to support analytical reporting
@@ -573,10 +545,8 @@
     <!-- Contact -->
     <section id="contact" class="hero section-spacing">
         <div class="container hero-container">
-            <!-- <div class="section-header"> -->
-            <h2 class="hero-title">Let's Connect</h2>
-            <p class="hero-role">Feel free to reach out <br> via any of the platforms below</p>
-            <!-- </div> -->
+            <h2 class="contact-title">Let's Connect</h2>
+            <p class="hero-role">Available for senior data architecture roles<br>and consulting engagements.</p>
 
             <div class="contact-grid">
                 <!-- Email -->
