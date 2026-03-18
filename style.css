@@ -985,6 +985,95 @@ h4 {
         padding-bottom: 16px;
     }
 
+    /* ── Skills: collapsible groups (mobile) ── */
+    .skills-group {
+        border: 1px solid var(--border-color);
+        border-radius: 4px;
+        overflow: hidden;
+    }
+
+    .skills-group-title {
+        padding: 16px 20px;
+        margin-bottom: 0;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        cursor: pointer;
+        user-select: none;
+        -webkit-tap-highlight-color: transparent;
+    }
+
+    .skills-group-toggle {
+        font-size: 1.4rem;
+        font-weight: 300;
+        color: var(--accent);
+        line-height: 1;
+        flex-shrink: 0;
+        margin-left: 12px;
+    }
+
+    .skills-group .skills-list {
+        display: none;
+        padding: 0 20px 20px;
+    }
+
+    .skills-group.expanded .skills-list {
+        display: flex;
+        animation: groupReveal 0.2s var(--ease) both;
+    }
+
+    /* ── Projects: accordion (mobile) ── */
+    .projects-layout {
+        display: block;
+    }
+
+    .projects-accordion {
+        display: flex;
+        flex-direction: column;
+        gap: 8px;
+    }
+
+    .accordion-entry .project-nav-item {
+        border-radius: 4px;
+        position: relative;
+        padding-right: 48px;
+    }
+
+    .accordion-entry.open .project-nav-item {
+        border-radius: 4px 4px 0 0;
+        border-bottom-color: transparent;
+    }
+
+    .accordion-toggle {
+        position: absolute;
+        top: 14px;
+        right: 16px;
+        font-size: 1.3rem;
+        font-weight: 300;
+        color: var(--accent);
+        line-height: 1;
+        pointer-events: none;
+    }
+
+    .accordion-body {
+        display: none;
+        border: 1px solid var(--border-color);
+        border-top: none;
+        border-radius: 0 0 4px 4px;
+        overflow: hidden;
+    }
+
+    .accordion-entry.open .accordion-body {
+        display: block;
+        animation: groupReveal 0.2s var(--ease) both;
+    }
+
+    .accordion-body .project-detail-card {
+        display: block;
+        border: none;
+        border-radius: 0;
+    }
+
     /* ── Contact section ── */
     #contact {
         padding: 60px 0;
@@ -1011,6 +1100,11 @@ h4 {
 }
 
 /* --- Animations --- */
+
+@keyframes groupReveal {
+    from { opacity: 0; transform: translateY(-4px); }
+    to   { opacity: 1; transform: translateY(0); }
+}
 
 /* Initial Load Animations (Hero Section) */
 .fade-in-up {
@@ -1123,6 +1217,37 @@ h4 {
 
 @keyframes vt-fade-in {
     from { opacity: 0; }
+}
+
+/* Scroll progress bar */
+#scroll-progress {
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 2px;
+    width: 0%;
+    background-color: var(--accent);
+    z-index: 1001;
+    pointer-events: none;
+    transition: width 0.08s linear;
+}
+
+
+/* Button tactile press */
+.btn:active {
+    transform: scale(0.97);
+    transition: transform 0.08s ease;
+}
+
+/* Skill filter hint (first visit) */
+@keyframes skillHint {
+    0%   { border-color: var(--border-color); color: var(--text-secondary); transform: translateY(0); }
+    40%  { border-color: var(--accent); color: var(--accent); background-color: var(--accent-muted); transform: translateY(-3px); }
+    100% { border-color: var(--border-color); color: var(--text-secondary); transform: translateY(0); }
+}
+
+.skill-badge.hint-pulse {
+    animation: skillHint 1s cubic-bezier(0.16, 1, 0.3, 1) forwards;
 }
 
 /* Respect reduced motion */

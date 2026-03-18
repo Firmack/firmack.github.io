@@ -214,6 +214,16 @@ skillBadges.forEach(badge => {
     });
 });
 
+// --- Scroll progress bar ---
+const scrollProgress = document.getElementById('scroll-progress');
+if (scrollProgress) {
+    window.addEventListener('scroll', () => {
+        const scrollTop = window.pageYOffset;
+        const docHeight = document.documentElement.scrollHeight - window.innerHeight;
+        scrollProgress.style.width = (docHeight > 0 ? (scrollTop / docHeight) * 100 : 0) + '%';
+    }, { passive: true });
+}
+
 // --- Scroll Reveal Animations (Intersection Observer) ---
 const revealElements = document.querySelectorAll('.scroll-reveal');
 
@@ -260,6 +270,91 @@ document.addEventListener('DOMContentLoaded', () => {
             badge.style.display = 'none';
         }
     });
+
+    // --- Mobile: collapsible skill groups ---
+    function initMobileSkills() {
+        document.querySelectorAll('.skills-group').forEach(group => {
+            const title = group.querySelector('.skills-group-title');
+            const toggle = document.createElement('span');
+            toggle.className = 'skills-group-toggle';
+            toggle.setAttribute('aria-hidden', 'true');
+            toggle.textContent = '+';
+            title.appendChild(toggle);
+            title.addEventListener('click', () => {
+                const expanded = group.classList.toggle('expanded');
+                toggle.textContent = expanded ? '\u2212' : '+';
+            });
+        });
+    }
+
+    // --- Mobile: accordion for projects ---
+    function initMobileAccordion() {
+        const sidebar = document.querySelector('.projects-sidebar');
+        const contentPane = document.querySelector('.projects-content');
+        const navItems = Array.from(document.querySelectorAll('.project-nav-item'));
+        const cards = Array.from(document.querySelectorAll('.project-detail-card'));
+        const accordion = document.createElement('div');
+        accordion.className = 'projects-accordion';
+
+        navItems.forEach((navItem, i) => {
+            const card = cards[i];
+            const entry = document.createElement('div');
+            entry.className = 'accordion-entry';
+
+            const toggle = document.createElement('span');
+            toggle.className = 'accordion-toggle';
+            toggle.setAttribute('aria-hidden', 'true');
+            toggle.textContent = '+';
+            navItem.appendChild(toggle);
+
+            const body = document.createElement('div');
+            body.className = 'accordion-body';
+            if (card) body.appendChild(card);
+
+            entry.appendChild(navItem);
+            entry.appendChild(body);
+            accordion.appendChild(entry);
+
+            navItem.addEventListener('click', () => {
+                const isOpen = entry.classList.contains('open');
+                accordion.querySelectorAll('.accordion-entry').forEach(e => e.classList.remove('open'));
+                accordion.querySelectorAll('.accordion-toggle').forEach(t => t.textContent = '+');
+                if (!isOpen) {
+                    entry.classList.add('open');
+                    toggle.textContent = '\u2212';
+                }
+            });
+        });
+
+        sidebar.style.display = 'none';
+        contentPane.style.display = 'none';
+        sidebar.parentElement.appendChild(accordion);
+
+        // Open first entry by default
+        const firstEntry = accordion.querySelector('.accordion-entry');
+        if (firstEntry) {
+            firstEntry.classList.add('open');
+            const firstToggle = firstEntry.querySelector('.accordion-toggle');
+            if (firstToggle) firstToggle.textContent = '\u2212';
+        }
+    }
+
+    if (window.innerWidth <= 768) {
+        initMobileSkills();
+        initMobileAccordion();
+    }
+
+    // --- Skills filter hint (first visit only) ---
+    if (!sessionStorage.getItem('skillsHinted')) {
+        sessionStorage.setItem('skillsHinted', '1');
+        setTimeout(() => {
+            const firstBadge = document.querySelector('#skills-container .skill-badge');
+            if (firstBadge) {
+                firstBadge.classList.add('hint-pulse');
+                firstBadge.addEventListener('animationend', () => firstBadge.classList.remove('hint-pulse'), { once: true });
+            }
+        }, 2000);
+    }
 
     // Populate skill tags in each detail card using data-skills from the
     // MATCHING NAV ITEM (same index). You only need to set data-skills
