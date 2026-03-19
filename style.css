@@ -670,10 +670,6 @@ h4 {
     border-color: var(--accent);
 }
 
-.skill-badge[data-tier="core"] {
-    color: var(--text-primary);
-    border-color: var(--border-highlight);
-}
 
 /* Projects Section Split Layout */
 .projects-layout {
