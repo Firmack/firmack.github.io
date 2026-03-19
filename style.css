@@ -375,6 +375,107 @@ h4 {
     gap: 24px;
 }
 
+/* Hero scroll indicator */
+.scroll-indicator {
+    position: absolute;
+    bottom: 48px;
+    left: 50%;
+    transform: translateX(-50%);
+    color: var(--text-secondary);
+    cursor: pointer;
+    opacity: 1;
+    transition: opacity 0.5s ease, color var(--transition-fast);
+    animation: indicatorBounce 2.4s ease-in-out infinite;
+    z-index: 2;
+}
+
+.scroll-indicator:hover {
+    color: var(--accent);
+}
+
+.scroll-indicator.hidden {
+    opacity: 0;
+    pointer-events: none;
+    animation: none;
+}
+
+@keyframes indicatorBounce {
+    0%, 100% { transform: translateX(-50%) translateY(0); }
+    50%       { transform: translateX(-50%) translateY(8px); }
+}
+
+/* Skills filter status bar */
+.filter-status {
+    display: none;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 12px;
+    margin-top: 32px;
+    padding: 14px 20px;
+    border: 1px solid var(--border-color);
+    border-left: 3px solid var(--accent);
+    border-radius: 4px;
+    background-color: var(--accent-muted);
+}
+
+.filter-status.active {
+    display: flex;
+    animation: filterStatusIn 0.3s var(--ease) both;
+}
+
+@keyframes filterStatusIn {
+    from { opacity: 0; transform: translateY(-6px); }
+    to   { opacity: 1; transform: translateY(0); }
+}
+
+.filter-status-count {
+    font-family: var(--font-heading);
+    font-size: 0.9rem;
+    font-weight: 600;
+    color: var(--text-primary);
+}
+
+.filter-status-actions {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.filter-status-jump {
+    background: none;
+    border: 1px solid var(--accent);
+    color: var(--accent);
+    font-family: var(--font-heading);
+    font-size: 0.85rem;
+    font-weight: 600;
+    padding: 6px 14px;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: var(--transition-fast);
+    letter-spacing: 0.01em;
+}
+
+.filter-status-jump:hover {
+    background-color: var(--accent);
+    color: var(--bg-main);
+}
+
+.filter-status-clear {
+    background: none;
+    border: none;
+    color: var(--text-secondary);
+    font-family: var(--font-heading);
+    font-size: 0.85rem;
+    cursor: pointer;
+    transition: color var(--transition-fast);
+    padding: 0;
+}
+
+.filter-status-clear:hover {
+    color: var(--text-primary);
+}
+
 /* About Section */
 #about {
     display: flex;
@@ -943,6 +1044,10 @@ h4 {
     }
 
     /* ── Hero / Contact sections ── */
+    .scroll-indicator {
+        display: none;
+    }
+
     .hero-title {
         margin-left: 0;
         line-height: 1.05;
@@ -980,6 +1085,11 @@ h4 {
     /* ── Skills section ── */
     .skills-container {
         gap: 30px;
+    }
+
+    .filter-status {
+        flex-direction: column;
+        align-items: flex-start;
     }
 
     .skill-badge {

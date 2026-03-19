@@ -27,7 +27,7 @@ If a query is slow, a pipeline is fragile, or a schema needs a rethink — that'
 
 ### Technical Expertise
 
-`MSSQL` `ETL/ELT` `Data Warehouse` `Data Modeling` `Performance Monitoring` `Database Migration` `SSIS` `Git` `PostgreSQL` `Snowflake` `DBT` `Azure DevOps` `Google BigQuery` `CI/CD` `AWS` `GCP` `Python` `Airbyte` `GCP Cloud Run` `Parquet` `JSON` `SSAS` `SSRS` `SSDT` `PowerBI` `BIML`
+`MSSQL` `ETL/ELT` `Data Warehouse` `Data Modeling` `Performance Monitoring` `Database Migration` `SSIS` `Git` `PostgreSQL` `Snowflake` `DBT` `Azure DevOps` `Google BigQuery` `CI/CD` `AWS` `GCP` `Python` `Airbyte` `Docker` `GCP Cloud Run` `Parquet` `JSON` `SSAS` `SSRS` `SSDT` `PowerBI` `BIML`
 
 ### Leadership & Domains
 
@@ -86,7 +86,7 @@ If a query is slow, a pipeline is fragile, or a schema needs a rethink — that'
 
 ---
 
-### Independent Data Consultant — Self-Employed — parallel to main roles
+### Independent Data Consultant — Self-Employed
 **January 2020 – Present**
 
 - Engaged across healthcare, education, private equity, and retail sectors to resolve

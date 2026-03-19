@@ -12,7 +12,7 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;600&family=Outfit:wght@100..900&display=swap" rel="stylesheet">
     <!-- CSS -->
-    <link rel="stylesheet" href="style.css?v=19">
+    <link rel="stylesheet" href="style.css?v=20">
     
 </head>
 
@@ -48,6 +48,11 @@
                 <a href="#contact" class="btn btn-primary">Get in Touch</a>
                 <a href="#projects" class="btn btn-secondary">View Experience</a>
             </div>
+        </div>
+        <div class="scroll-indicator fade-in-up delay-3" id="scroll-indicator" role="button" tabindex="0" aria-label="Scroll to content">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <polyline points="6 9 12 15 18 9"></polyline>
+            </svg>
         </div>
     </section>
 
@@ -174,6 +179,14 @@
                     </div>
                 </div>
             </div>
+
+            <div class="filter-status" id="filter-status" aria-live="polite">
+                <span class="filter-status-count"></span>
+                <div class="filter-status-actions">
+                    <button class="filter-status-jump" id="filter-status-jump">View matching roles ↓</button>
+                    <button class="filter-status-clear" id="filter-status-clear">Clear filter</button>
+                </div>
+            </div>
         </div>
     </section>
 
@@ -210,7 +223,7 @@
                     </div>
 
                     <div class="project-nav-item"
-                        data-skills="mssql,postgresql,etl-elt,data-modeling,dwh,db-migration,gcp,cloud-run,aws,performance,python,git,ssis,airbyte,dwh">
+                        data-skills="mssql,postgresql,etl-elt,data-modeling,dwh,db-migration,gcp,cloud-run,aws,performance,python,git,ssis,airbyte,dwh,dbt,docker,bigquery">
                         <h3 class="nav-project-role">Independent Data Consultant</h3>
                         <span class="nav-project-company">Self-Employed</span>
                         <span class="nav-project-date">January 2020 - Present <span
@@ -339,7 +352,7 @@
                         <div class="project-header-content">
                             <h3 class="detail-project-role">Independent Data Consultant</h3>
                             <div class="detail-project-meta">
-                                <span class="detail-project-company">Self-Employed &mdash; parallel to main roles</span>
+                                <span class="detail-project-company">Self-Employed</span>
                                 <span class="detail-project-date">January 2020 &ndash; Present</span>
                             </div>
                         </div>

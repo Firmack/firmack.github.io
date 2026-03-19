@@ -144,6 +144,28 @@ skillBadges.forEach(badge => {
 
 let activeSkills = [];
 
+function updateFilterStatus() {
+    const statusEl = document.getElementById('filter-status');
+    const countEl = statusEl ? statusEl.querySelector('.filter-status-count') : null;
+    if (!statusEl || !countEl) return;
+
+    if (activeSkills.length === 0) {
+        statusEl.classList.remove('active');
+        return;
+    }
+
+    let matchCount = 0;
+    projectNavItems.forEach(navItem => {
+        const str = navItem.getAttribute('data-skills');
+        const skills = str ? str.split(',').map(s => s.trim()) : [];
+        if (activeSkills.some(skill => skills.includes(skill))) matchCount++;
+    });
+
+    const skillWord = activeSkills.length === 1 ? 'skill' : 'skills';
+    countEl.textContent = `${matchCount} of ${projectNavItems.length} roles match (${activeSkills.length} ${skillWord} selected)`;
+    statusEl.classList.add('active');
+}
+
 skillBadges.forEach(badge => {
     badge.addEventListener('click', () => {
         const selectedSkill = badge.getAttribute('data-skill');
@@ -168,6 +190,7 @@ skillBadges.forEach(badge => {
                     b.classList.remove('active-skill');
                 });
             });
+            updateFilterStatus();
             return;
         }
 
@@ -211,8 +234,28 @@ skillBadges.forEach(badge => {
         if (activeNav && activeNav.classList.contains('dimmed') && firstMatchIndex !== -1) {
             projectNavItems[firstMatchIndex].click();
         }
+
+        updateFilterStatus();
     });
 });
+
+// --- Hero scroll indicator ---
+const scrollIndicator = document.getElementById('scroll-indicator');
+if (scrollIndicator) {
+    scrollIndicator.addEventListener('click', () => {
+        const target = document.querySelector('#about');
+        if (target) {
+            const offsetPosition = target.getBoundingClientRect().top + window.pageYOffset - 80;
+            window.scrollTo({ top: offsetPosition, behavior: 'smooth' });
+        }
+    });
+    scrollIndicator.addEventListener('keydown', (e) => {
+        if (e.key === 'Enter' || e.key === ' ') scrollIndicator.click();
+    });
+    window.addEventListener('scroll', () => {
+        scrollIndicator.classList.toggle('hidden', window.scrollY > 80);
+    }, { passive: true });
+}
 
 // --- Scroll progress bar ---
 const scrollProgress = document.getElementById('scroll-progress');
@@ -248,6 +291,34 @@ document.addEventListener('DOMContentLoaded', () => {
     revealElements.forEach(el => {
         revealOnScroll.observe(el);
     });
+
+    // --- Filter status bar actions ---
+    const jumpBtn = document.getElementById('filter-status-jump');
+    const clearBtn = document.getElementById('filter-status-clear');
+
+    if (jumpBtn) {
+        jumpBtn.addEventListener('click', () => {
+            const target = document.querySelector('#projects');
+            if (target) {
+                const offsetPosition = target.getBoundingClientRect().top + window.pageYOffset - 80;
+                window.scrollTo({ top: offsetPosition, behavior: 'smooth' });
+            }
+        });
+    }
+
+    if (clearBtn) {
+        clearBtn.addEventListener('click', () => {
+            activeSkills = [];
+            document.querySelectorAll('.skill-badge').forEach(b => b.classList.remove('active'));
+            projectNavItems.forEach(navItem => {
+                navItem.classList.remove('highlight', 'dimmed');
+            });
+            projectDetailCards.forEach(card => {
+                card.querySelectorAll('.project-skill-badge').forEach(b => b.classList.remove('active-skill'));
+            });
+            updateFilterStatus();
+        });
+    }
 
     // Build a name lookup map from all skill badges in the Skills section
     const skillNameMap = {};

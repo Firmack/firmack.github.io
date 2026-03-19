@@ -71,22 +71,8 @@ class HeroBlock(Flowable):
         c = self.canv
         h = self.height
 
-        m = self._margin
-        full_w = self._w + 2 * m   # full page width
-
-        # Black background — bleeds to page edges
-        c.setFillColor(C_BLACK)
-        c.rect(-m, 0, full_w, h, fill=1, stroke=0)
-
-        # Amber bottom accent bar
-        c.setFillColor(C_ACCENT)
-        c.rect(-m, 0, full_w, 2 * mm, fill=1, stroke=0)
-
-        # Amber top accent bar
-        c.rect(-m, h - 2 * mm, full_w, 2 * mm, fill=1, stroke=0)
-
         # ── Left column: name + role ──────────────────────────────────────────
-        c.setFillColor(C_WHITE)
+        c.setFillColor(C_DARK)
         c.setFont("Helvetica-Bold", 26)
         c.drawString(0, h - 20 * mm, self.name)
 
@@ -96,7 +82,7 @@ class HeroBlock(Flowable):
 
         # ── Vertical separator ────────────────────────────────────────────────
         sep_x = self._w * 0.56
-        c.setStrokeColor(colors.HexColor("#2a2a2a"))
+        c.setStrokeColor(C_LIGHT)
         c.setLineWidth(0.5)
         c.line(sep_x, 5 * mm, sep_x, h - 5 * mm)
 
@@ -115,8 +101,8 @@ class HeroBlock(Flowable):
             c.setFont("Helvetica-Bold", 6.5)
             c.drawString(sep_x + 7 * mm, y, label.upper())
 
-            # white value, right-aligned
-            c.setFillColor(C_WHITE)
+            # dark value, right-aligned
+            c.setFillColor(C_BODY)
             c.setFont("Helvetica", 8)
             c.drawRightString(self._w, y, value)
 
@@ -200,7 +186,7 @@ def make_styles() -> dict:
         return ParagraphStyle("_", parent=base["Normal"], **kw)
 
     return {
-        "tagline":   ps(fontSize=9,   textColor=C_MID,    leading=13, spaceBefore=4),
+        "tagline":   ps(fontSize=9,   textColor=C_BODY,   leading=13, spaceBefore=4),
         "body":      ps(fontSize=9.5, textColor=C_BODY,   leading=14, spaceBefore=2),
         "bullet":    ps(fontSize=9,   textColor=C_BODY,   leading=13,
                         leftIndent=10, firstLineIndent=-10, spaceBefore=1),
@@ -388,7 +374,6 @@ def build_story(data: dict, page_w: float, margins: float) -> list:
             story.append(row)
 
     # Skills
-    story.append(PageBreak())
     story.append(SectionTitle("Skills & Tools", usable))
     story.append(Spacer(1, 1 * mm))
     for grp_name, badges in data["skills"]:
@@ -400,6 +385,7 @@ def build_story(data: dict, page_w: float, margins: float) -> list:
         story.append(Spacer(1, 2 * mm))
 
     # Experience
+    story.append(PageBreak())
     story.append(SectionTitle("Experience", usable))
     story.append(Spacer(1, 1 * mm))
     for idx, (role, company, date, bullets) in enumerate(data["jobs"]):
@@ -434,7 +420,18 @@ def main():
     text = README_FILE.read_text(encoding="utf-8")
     data = parse_readme(text)
 
-    margin = 12 * mm
+    margin  = 12 * mm
+    hero_h  = 50 * mm
+    page_w, page_h = A4
+
+    def draw_hero_bars(canvas, doc):
+        """Draw full-bleed amber bars on the raw canvas, bypassing frame clipping."""
+        canvas.saveState()
+        canvas.setFillColor(C_ACCENT)
+        canvas.rect(0, page_h - margin - 2 * mm, page_w, 2 * mm, fill=1, stroke=0)
+        canvas.rect(0, page_h - margin - hero_h,  page_w, 2 * mm, fill=1, stroke=0)
+        canvas.restoreState()
+
     doc = SimpleDocTemplate(
         str(OUTPUT_FILE),
         pagesize=A4,
@@ -445,7 +442,7 @@ def main():
     )
 
     story = build_story(data, A4[0], margin)
-    doc.build(story)
+    doc.build(story, onFirstPage=draw_hero_bars, onLaterPages=lambda c, d: None)
     print(f"OK: {OUTPUT_FILE.name} generated ({OUTPUT_FILE.stat().st_size:,} bytes)")
 
 
