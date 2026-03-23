@@ -355,7 +355,7 @@ h4 {
     font-size: clamp(3rem, 10vw, 9rem);
     font-weight: 700;
     margin-bottom: 0.35rem;
-    margin-left: -5px; /* Visual alignment – removed on mobile */
+    margin-left: -5px; /* Visual alignment - removed on mobile */
     letter-spacing: -0.04em;
     line-height: 1.0;
 }

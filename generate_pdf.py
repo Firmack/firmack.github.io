@@ -312,6 +312,10 @@ def parse_readme(text: str) -> dict:
                         data["jobs"].append((role_s, company_s, date_s, []))
                     elif ln.startswith("- ") and data["jobs"]:
                         data["jobs"][-1][3].append(clean(ln[2:]))
+                    elif ln and not ln.startswith("#") and not ln.startswith("-") \
+                            and data["jobs"] and data["jobs"][-1][3]:
+                        # continuation of the previous bullet (multi-line in README)
+                        data["jobs"][-1][3][-1] += " " + clean(ln)
                     i += 1
                 continue
 
@@ -389,20 +393,24 @@ def build_story(data: dict, page_w: float, margins: float) -> list:
     story.append(SectionTitle("Experience", usable))
     story.append(Spacer(1, 1 * mm))
     for idx, (role, company, date, bullets) in enumerate(data["jobs"]):
-        block = [
+        # Keep header + first bullet together to avoid orphaned headings
+        header = [
             Paragraph(role, S["role_h"]),
             Paragraph(company, S["company"]),
             Paragraph(date, S["date"]),
             Spacer(1, 2 * mm),
         ]
-        for b in bullets:
-            block.append(Paragraph(f"\u2013\u00a0\u00a0{b}", S["bullet"]))
+        if bullets:
+            header.append(Paragraph(f"\u2013\u00a0\u00a0{bullets[0]}", S["bullet"]))
+        story.append(KeepTogether(header))
+        # Remaining bullets flow freely so long entries aren't clipped
+        for b in bullets[1:]:
+            story.append(Paragraph(f"\u2013\u00a0\u00a0{b}", S["bullet"]))
         if idx < len(data["jobs"]) - 1:
-            block.append(Spacer(1, 3 * mm))
-            block.append(HRFlowable(
+            story.append(Spacer(1, 3 * mm))
+            story.append(HRFlowable(
                 width="100%", thickness=0.5, color=C_LIGHT, spaceAfter=2 * mm
             ))
-        story.append(KeepTogether(block))
 
     # Footer
     story.append(Spacer(1, 8 * mm))

@@ -87,7 +87,7 @@ If a query is slow, a pipeline is fragile, or a schema needs a rethink — that'
 ---
 
 ### Independent Data Consultant — Self-Employed
-**January 2020 – Present**
+**January 2020 - Present**
 
 - Engaged across healthcare, education, private equity, and retail sectors to resolve
                                     performance bottlenecks and redesign data architectures.
