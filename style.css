@@ -956,7 +956,7 @@ h4 {
 
 .contact-social {
     display: flex;
-    flex-wrap: nowrap;
+    flex-wrap: wrap;
     gap: 12px;
     justify-content: center;
 }
@@ -1245,7 +1245,8 @@ h4 {
 
     #contact .container {
         width: 100%;
-        align-items: flex-start;
+        align-items: center;
+        text-align: center;
     }
 
     .cv-download {
